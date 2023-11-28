@@ -1,0 +1,32 @@
+#**
+ *  Render a hit representing a Product
+ *  assumed to have a field called "name"
+ *#
+
+#set($sku = $doc.getFieldValue('sku_no'))
+#set($itemsource = "REG")
+#set($original_term = $doc.getFieldValue('original_term'))
+
+<div class="result-title"><a href="//www.bhphotovideo.com/c/search?Ntt=${original_term}&N=0" target="_blank">
+	<b>#field('display_name')</b> 
+	</a>#field('itemcode')
+</div>
+##do we have a physical store for this product
+##set($store = $doc.getFieldValue('store'))
+<div class="map">
+<a href="//www.bhphotovideo.com/c/product/${sku}-${itemsource}" target="_blank">
+<img src="//static.bhphoto.com/images/images250x250/${sku}.jpg" width="100" height="100"/>
+</a>
+</div>
+<div class="map">
+<a href="javascript:poplateItemSearchTerms('${sku}');">See terms</a>
+<div id="${sku}" style="display:none">
+Items:
+</div>
+</div>
+<div><strong>Term:</strong> #field('original_term') <strong>Modified Term:</strong> #field('modified_term')</div>
+<div><strong>Searches:</strong> #field('original_term_total_searched') <strong>Modified Term Searches:</strong> #field('modified_term_total_searched')</div>
+<div><strong>Score:</strong> #field('original_score') <strong>Modified Score:</strong> #field('modified_score')</div>
+<div><strong>ORG Detail Clicks:</strong> #field('original_detail_pages') <strong>Add To Carts:</strong> #field('original_add2carts') <strong>Orders:</strong> #field('original_orders')</div>
+<div><strong>MOD Detail Clicks:</strong> #field('modified_detail_pages') <strong>Add To Carts:</strong> #field('modified_add2carts') <strong>Orders:</strong> #field('modified_orders')</div>
+#parse('debug.vm')

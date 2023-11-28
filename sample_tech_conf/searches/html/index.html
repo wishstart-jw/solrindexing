@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	    crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css">
+	<link rel="stylesheet" href="file?file=/html/style.css&contentType=text/css" />
+
+	<title>Solr Results</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav id="sidebar">
+			<div class="sidebar-header">
+				<h4>Click Stream</h4>
+			</div>
+
+			<ul class="list-unstyled components" id="facetFields">
+				<p>Facet Fields</p>
+				<li class="active">
+					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Home</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li>
+							<a href="#">Term 1</a> (1111)
+						</li>
+						<li>
+							<a href="#">Term 2</a> (1234)
+						</li>
+						<li>
+							<a href="#">Term 3</a> (321)
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">About</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="content container-fluid">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#">Click Stream</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+				    aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Features</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Pricing</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="jumbotron w-75">
+				<form id="searchForm">
+					<div class="form-group">
+						<label for="searchTerm">Filter the click stream</label>
+						<input type="text" class="form-control" id="searchTerm" name="q" aria-describedby="searchHelp" placeholder="Search">
+						<small id="searchHelp" class="form-text text-muted">Search for a search</small>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="sort" id="inlineRadio1" value="original_score desc">
+						<label class="form-check-label" for="inlineRadio1">Sort By Original Score</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="sort" id="inlineRadio2" value="modified_score desc" checked="true">
+						<label class="form-check-label" for="inlineRadio2">Sort By Modified Score</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="sort" id="inlineRadio3" value="">
+						<label class="form-check-label" for="inlineRadio3">No Sort</label>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<input type="hidden" name="fq" />
+				</form>
+				<h4 id="selectedFacetContainer">Selected Facets:</h4>
+				<div id="selectedFacets"></div>
+			</div>
+
+			<div class="container-fluid" id="cards">
+				<div class="card w-75">
+					<div class="row">
+						<div class="col-2">
+							<img class="card-img" src="https://static.bhphoto.com/images/images250x250/1274705.jpg" />
+						</div>
+						<div class="col-10">
+							<div class="card-body">
+								<h5 class="card-title">
+									<a href="https://www.bhphotovideo.com/c/product/1274705-REG" target="_blank">
+										canon eos 5d mark iv dslr camera (body only)
+									</a> CAE5D4</h5>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>ORG Term:</strong> canon - eos 5d mark iv</div>
+										<div class="col-4">
+											<strong>Searches:</strong> 5.0</div>
+										<div class="col-4">
+											<strong>Score:</strong> 0.4</div>
+									</div>
+
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>MOD Term:</strong> 5d canon eos iv mark </div>
+										<div class="col-4">
+											<strong>Term Searches:</strong> 46465.0 </div>
+										<div class="col-4">
+											<strong>Score:</strong> 0.21983896 </div>
+									</div>
+
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>ORG Detail Clicks:</strong> 11694.0</div>
+										<div class="col-4">
+											<strong>Add To Carts:</strong> 2198.0</div>
+										<div class="col-4">
+											<strong>Orders:</strong> 322.0 </div>
+									</div>
+
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>MOD Detail Clicks:</strong> 11694.0</div>
+										<div class="col-4">
+											<strong>Add To Carts:</strong> 2198.0</div>
+										<div class="col-4">
+											<strong>Orders:</strong> 322.0 </div>
+									</div>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="card w-75">
+					<div class="row">
+						<div class="col-2">
+							<img class="card-img" src="https://static.bhphoto.com/images/images250x250/1274705.jpg" />
+						</div>
+						<div class="col-10">
+							<div class="card-body">
+								<h5 class="card-title">
+									<a href="https://www.bhphotovideo.com/c/product/1274705-REG" target="_blank">
+										canon eos 5d mark iv dslr camera (body only)
+									</a> CAE5D4</h5>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>ORG Term:</strong> canon - eos 5d mark iv</div>
+										<div class="col-4">
+											<strong>Searches:</strong> 5.0</div>
+										<div class="col-4">
+											<strong>Score:</strong> 0.4</div>
+									</div>
+
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>MOD Term:</strong> 5d canon eos iv mark </div>
+										<div class="col-4">
+											<strong>Term Searches:</strong> 46465.0 </div>
+										<div class="col-4">
+											<strong>Score:</strong> 0.21983896 </div>
+									</div>
+
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>ORG Detail Clicks:</strong> 11694.0</div>
+										<div class="col-4">
+											<strong>Add To Carts:</strong> 2198.0</div>
+										<div class="col-4">
+											<strong>Orders:</strong> 322.0 </div>
+									</div>
+
+								</li>
+								<li class="list-group-item">
+									<div class="row">
+										<div class="col-4">
+											<strong>MOD Detail Clicks:</strong> 11694.0</div>
+										<div class="col-4">
+											<strong>Add To Carts:</strong> 2198.0</div>
+										<div class="col-4">
+											<strong>Orders:</strong> 322.0 </div>
+									</div>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>&nbsp;</div>
+		</div>
+	</div>
+
+	<div class="modal" id="itemSearchesModal" tabindex="-1" role="dialog" aria-labelledby="itemSearchesModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="itemSearchesModalLabel">Searches for item:</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-6">
+							<strong>Term:</strong> canon - eos 5d mark iv</div>
+						<div class="col-2">
+							<strong>Clicks:</strong> 5.0</div>
+						<div class="col-2">
+							<strong>Carts:</strong> 0.4</div>
+						<div class="col-2">
+							<strong>Orders:</strong> 0.4</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	    crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	    crossorigin="anonymous"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="file?file=/html/click-stream.js&contentType=text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.js"></script>
+
+	<script id="facet-template" type="text/x-handlebars-template">
+		<p>Facet Fields</p>
+		{{#each this}}
+		<li class="active">
+			<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">{{@key}}</a>
+			<ul class="collapse list-unstyled" id="homeSubmenu">
+				{{#each this}}
+				<li>
+					<a href="#" data-term='{{@../key}}:"{{@key}}"'>{{@key}}
+						<small>({{this}})</small>
+					</a>
+				</li>
+				{{/each}}
+			</ul>
+		</li>
+		{{/each}}
+	</script>
+
+	<script id="item-template" type="text/x-handlebars-template">
+		{{#each docs}}
+		<div class="card w-75">
+			<div class="row">
+				<div class="col-2">
+					<img class="card-img" src="https://static.bhphoto.com/images/images250x250/{{sku_no}}.jpg" />
+				</div>
+				<div class="col-10">
+					<div class="card-body">
+						<h5 class="card-title">
+							<a class="col-6" href="https://www.bhphotovideo.com/c/product/{{sku_no}}-REG" target="_blank">
+								{{display_name}}
+							</a>
+							<small class="col-4">{{itemcode}}</small>
+							<span class="col-4"><button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-skuno="{{sku_no}}" data-target="#itemSearchesModal">Details</button></span>
+						</h5>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-4">
+									<strong>ORG Term:</strong> {{original_term}}</div>
+								<div class="col-4">
+									<strong>Searches:</strong> {{original_term_total_searched}}</div>
+								<div class="col-4">
+									<strong>Score:</strong> {{original_score}}</div>
+							</div>
+
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-4">
+									<strong>MOD Term:</strong> {{modified_term}}</div>
+								<div class="col-4">
+									<strong>Term Searches:</strong> {{modified_term_total_searched}}</div>
+								<div class="col-4">
+									<strong>Score:</strong> {{modified_score}} </div>
+							</div>
+
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-4">
+									<strong>ORG Clicks:</strong> {{original_detail_pages}}</div>
+								<div class="col-4">
+									<strong>Carts:</strong> {{original_add2carts}}</div>
+								<div class="col-4">
+									<strong>Orders:</strong> {{original_orders}} </div>
+							</div>
+
+						</li>
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-4">
+									<strong>MOD Clicks:</strong> {{modified_detail_pages}}</div>
+								<div class="col-4">
+									<strong>Carts:</strong> {{modified_add2carts}}</div>
+								<div class="col-4">
+									<strong>Orders:</strong> {{modified_orders}} </div>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+
+	</script>
+
+	<script id="searches-template" type="text/x-handlebars-template">
+		{{#each docs}}
+		<div class="row">
+			<div class="col-6">
+				<strong>Term:</strong> {{modified_term}}
+				<small>
+					<a href="https://www.bhphotovideo.com/c/search?Ntt={{modified_term}}" target="_blank">
+						<span class="oi oi-link-intact"></span>
+					</a>
+				</small>
+			</div>
+			<div class="col-2">
+				<strong>Clicks:</strong> {{modified_detail_pages}}</div>
+			<div class="col-2">
+				<strong>Carts:</strong> {{modified_add2carts}}</div>
+			<div class="col-2">
+				<strong>Orders:</strong> {{modified_orders}} </div>
+		</div>
+		{{/each}}
+	</script>
+</body>
+
+</html>
