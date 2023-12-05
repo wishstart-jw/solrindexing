@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import javax.sql.DataSource;
+
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.Http2SolrClient;
 import org.apache.solr.common.SolrInputDocument;
@@ -14,6 +16,8 @@ import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
@@ -23,6 +27,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -46,7 +51,6 @@ public class IndexingJobBuilder {
 				.build();
 	}
 
-	
 	@Bean
 	public Job indexingJob(JobRepository jobRepository, JobExecutionListener listener, Step step1, Step step2) {
 		return new JobBuilder("indexingJob", jobRepository)
@@ -65,10 +69,10 @@ public class IndexingJobBuilder {
 
 	@Bean
 	public Step step2(JobRepository jobRepository, DataSourceTransactionManager transactionManager,
-					FlatFileItemReader<Map<String, Object>> reader, MapToSolrDocumentProcessor processor, SolrItemWriter writer) {
+					ItemReader<Map<String, Object>> dbReader, MapToSolrDocumentProcessor processor, SolrItemWriter writer) {
 		return new StepBuilder("step_add_docs", jobRepository)
 			.<Map<String, Object>,SolrInputDocument> chunk(10, transactionManager)
-			.reader(reader)
+			.reader(dbReader)
 			.processor(processor)
 			.writer(writer)
 			.build();
@@ -99,10 +103,14 @@ public class IndexingJobBuilder {
 			})
 			.build();
 	}
-	/*
-	@Bean JdbcCursorItemReader reader() {
-		return new JdbcCursorItemReader(){
-			
-		};
-	}*/
+
+	@Bean
+	public JdbcCursorItemReader<Map<String, Object>> dbReader(DataSource dataSource) {
+		JdbcCursorItemReader<Map<String, Object>> reader = new JdbcCursorItemReader<>();
+		reader.setDataSource(dataSource);
+		reader.setSql("select * from items");
+		reader.setFetchSize(1000);
+		reader.setRowMapper(new ColumnMapRowMapper());
+		return reader;
+	}
 }
