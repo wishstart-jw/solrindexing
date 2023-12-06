@@ -454,7 +454,7 @@
   <field name="brand_id" type="pint" docValues="true" indexed="true" stored="false" useDocValuesAsStored="true"/>
   <field name="brand_name" type="string" required="false" useDocValuesAsStored="true"/>
   <field name="brand_search" type="text_general" uninvertible="false" docValues="false" indexed="true" stored="true"/>
-  <field name="category" type="string" required="false" useDocValuesAsStored="true"/>
+  <field name="category_name" type="strings" required="false" useDocValuesAsStored="true"/>
   <field name="category_search" type="text_general" uninvertible="false" docValues="false" multiValued="true" indexed="true" stored="true"/>
   <field name="condition" type="string" docValues="true" indexed="true" stored="false" useDocValuesAsStored="true"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
@@ -468,5 +468,5 @@
   <field name="url" type="string" required="false"/>
   <field name="weight" type="string" required="false"/>
   <copyField source="brand_name" dest="brand_search"/>
-  <copyField source="category" dest="category_search"/>
+  <copyField source="category_name" dest="category_search"/>
 </schema>
